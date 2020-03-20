@@ -13,10 +13,10 @@ If you would like to download the code and try it for yourself:
 1. Clone this repo
 2. Install packages: `npm install`
 3. Configure it to use your Okta tenant via OpenIDConnect
-4. Change out the database configuration in config/database.js
-5. Change out auth keys in config/auth.js
-6. Launch: `npm start`
-7. Visit in your browser at: `http://localhost:8080`
+4. Whitelist the following urls in the App (and in CORS):
+
+5. Launch the app: `npm start`
+6. Visit in your browser at: `http://localhost:8080`
 
 Note:  Runs on SVR4 linux only (MacOS or Linux), if you are Windows and need a development environment to try this out use the CFT located here:  https://jgalvinoktacftdemotemplates.s3.us-east-1.amazonaws.com/Single%20Amazon%20AWS%20Instance%20us-east1%20with%20ASA%20enrollment.json.txt
 
