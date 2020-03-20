@@ -1,27 +1,22 @@
-# Easy Node Authentication
+# Easy Node Authentication with Okta
 
-Code for the entire scotch.io tutorial series: Complete Guide to Node Authentication
+Based on the Scotch.io example here:  http://scotch.io/tutorials/easy-node-authentication-linking-all-accounts-together
 
-We will be using Passport to authenticate users locally, with Facebook, Twitter, and Google.
-
-#### Upgraded To Express 4.0
-This tutorial has been upgraded to use ExpressJS 4.0. See [the commit](https://github.com/scotch-io/easy-node-authentication/commit/020dea057d5a0664caaeb041b18978237528f9a3) for specific changes.
+Uses techstarts passport-okta-oauth to authentication to a free developer tenant in Okta - get one here:  https://developer.okta.com 
 
 ## Instructions
 
 If you would like to download the code and try it for yourself:
 
-1. Clone the repo: `git clone git@github.com:scotch-io/easy-node-authentication`
+1. Clone this repo
 2. Install packages: `npm install`
-3. Change out the database configuration in config/database.js
-4. Change out auth keys in config/auth.js
-5. Launch: `node server.js`
-6. Visit in your browser at: `http://localhost:8080`
+3. Configure it to use your Okta tenant via OpenIDConnect
+4. Change out the database configuration in config/database.js
+5. Change out auth keys in config/auth.js
+6. Launch: `npm start`
+7. Visit in your browser at: `http://localhost:8080`
 
-## The Tutorials
+Note:  Runs on SVR4 linux only (MacOS or Linux), if you are Windows and need a development environment to try this out use the CFT located here:  https://jgalvinoktacftdemotemplates.s3.us-east-1.amazonaws.com/Single%20Amazon%20AWS%20Instance%20us-east1%20with%20ASA%20enrollment.json.txt
 
-- [Getting Started and Local Authentication](http://scotch.io/tutorials/easy-node-authentication-setup-and-local)
-- [Facebook](http://scotch.io/tutorials/easy-node-authentication-facebook)
-- [Twitter](http://scotch.io/tutorials/easy-node-authentication-twitter)
-- [Google](http://scotch.io/tutorials/easy-node-authentication-google)
-- [Linking All Accounts Together](http://scotch.io/tutorials/easy-node-authentication-linking-all-accounts-together)
+
+## Many Thanks to TechStars and Scotch.io!  
