@@ -2,7 +2,9 @@
 
 Based on the Scotch.io example here:  http://scotch.io/tutorials/easy-node-authentication-linking-all-accounts-together
 
-Uses techstarts passport-okta-oauth to authentication to a free developer tenant in Okta - get one here:  https://developer.okta.com 
+Uses techstars passport-okta-oauthto authentication to a free developer tenant in Okta - http://www.passportjs.org/packages/passport-okta-oauth/
+
+Get an Okta Developer tenant here:  https://developer.okta.com 
 
 ## Instructions
 
