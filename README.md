@@ -13,7 +13,22 @@ If you would like to download the code and try it for yourself:
 1. Clone this repo
 2. Install packages: `npm install`
 3. Configure it to use your Okta tenant via OpenIDConnect
-4. Whitelist the following urls in the App (and in CORS):
+4. Whitelist the following urls in the App 
+
+Login URIs:
+http://localhost:8080/auth/okta/callback
+http://localhost:8080/auth/okta
+
+Logout URIs:
+http://localhost:8080
+http://localhost:8080/auth/okta/callback
+http://localhost:8080/auth/okta
+
+Initiate Login URI:
+http://localhost:8080/auth/okta/callback
+
+5.  Whitlist the following urls in CORS:
+http://localhost:8080
 
 5. Launch the app: `npm start`
 6. Visit in your browser at: `http://localhost:8080`
