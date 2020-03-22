@@ -105,6 +105,31 @@
         </div>
     </div>
 
+    <div class="row">
+<!-- OKTA INFORMATION -->
+<div class="col-sm-6">
+    <div class="well">
+        <h3 class="text-primary"><span class="fa fa-circle-o"></span> Okta</h3>
+
+        <% if (user.okta.token) { %>
+            <p>
+                <strong>id</strong>: <%= user.okta.id %><br>
+                <strong>token</strong>: <%= user.okta.token %><br>
+                <strong>email</strong>: <%= user.okta.email %><br>
+                <strong>name</strong>: <%= user.okta.name %>
+            </p>
+
+            <a href="/unlink/okta" class="btn btn-primary">Unlink</a>
+        <% } else { %>
+            <a href="/connect/okta" class="btn btn-primary">Connect Okta</a>
+        <% } %>
+
+    </div>
+    <div class="col-sm-6"></div>
+</div>
+
+    </div>
+
     <div class="text-center">
         <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
         <p>Visit the <a href="http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local">tutorial</a>.</p>

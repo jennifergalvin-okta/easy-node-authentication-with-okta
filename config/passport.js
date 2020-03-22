@@ -3,6 +3,8 @@ var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy  = require('passport-twitter').Strategy;
 var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
+var OktaStrategy = require ('passport-okta-oauth').Strategy;
+
 
 // load up the user model
 var User       = require('../app/models/user');
@@ -356,6 +358,86 @@ module.exports = function(passport) {
                 user.google.token = token;
                 user.google.name  = profile.displayName;
                 user.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
+
+                user.save(function(err) {
+                    if (err)
+                        return done(err);
+                        
+                    return done(null, user);
+                });
+
+            }
+
+        });
+
+    }));
+
+    // =========================================================================
+    // OKTA ==================================================================
+    // =========================================================================
+    passport.use(new OktaStrategy({
+
+        audience:  configAuth.oktaAuth.audience,
+        clientID        : configAuth.oktaAuth.clientID,
+        clientSecret    : configAuth.oktaAuth.clientSecret,
+        callbackURL     : configAuth.oktaAuth.callbackURL,
+        passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+
+    },
+    function(req, token, refreshToken, profile, done) {
+
+        // asynchronous
+        process.nextTick(function() {
+
+            // check if the user is already logged in
+            if (!req.user) {
+
+                User.findOne({ 'okta.id' : profile.id }, function(err, user) {
+                    if (err)
+                        return done(err);
+
+                    if (user) {
+
+                        // if there is a user id already but no token (user was linked at one point and then removed)
+                        if (!user.okta.token) {
+                            user.okta.token = token;
+                            user.okta.name  = profile.displayName;
+                            user.okta.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
+
+                            user.save(function(err) {
+                                if (err)
+                                    return done(err);
+                                    
+                                return done(null, user);
+                            });
+                        }
+
+                        return done(null, user);
+                    } else {
+                        var newUser          = new User();
+
+                        newUser.okta.id    = profile.id;
+                        newUser.okta.token = token;
+                        newUser.okta.name  = profile.displayName;
+                        newUser.okta.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
+
+                        newUser.save(function(err) {
+                            if (err)
+                                return done(err);
+                                
+                            return done(null, newUser);
+                        });
+                    }
+                });
+
+            } else {
+                // user already exists and is logged in, we have to link accounts
+                var user               = req.user; // pull the user out of the session
+
+                user.okta.id    = profile.id;
+                user.okta.token = token;
+                user.okta.name  = profile.displayName;
+                user.okta.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
 
                 user.save(function(err) {
                     if (err)

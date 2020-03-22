@@ -88,6 +88,18 @@ module.exports = function(app, passport) {
                 failureRedirect : '/'
             }));
 
+    // okta ---------------------------------
+
+        // send to okta to do the authentication
+        app.get('/auth/okta', passport.authenticate('okta', { scope : ['openid', 'profile', 'email'] }));
+
+        // the callback after okta has authenticated the user
+        app.get('/auth/okta/callback',
+            passport.authenticate('okta', {
+                successRedirect : '/profile',
+                failureRedirect : '/'
+            }));
+
 // =============================================================================
 // AUTHORIZE (ALREADY LOGGED IN / CONNECTING OTHER SOCIAL ACCOUNT) =============
 // =============================================================================
@@ -139,6 +151,19 @@ module.exports = function(app, passport) {
                 failureRedirect : '/'
             }));
 
+    // okta ---------------------------------
+
+        // send to okta to do the authentication
+        app.get('/connect/okta', passport.authorize('okta', { scope : ['profile', 'email'] }));
+
+        // the callback after google has authorized the user
+        app.get('/connect/okta/callback',
+            passport.authorize('okta', {
+                successRedirect : '/profile',
+                failureRedirect : '/'
+            }));
+
+
 // =============================================================================
 // UNLINK ACCOUNTS =============================================================
 // =============================================================================
@@ -178,6 +203,15 @@ module.exports = function(app, passport) {
     app.get('/unlink/google', isLoggedIn, function(req, res) {
         var user          = req.user;
         user.google.token = undefined;
+        user.save(function(err) {
+            res.redirect('/profile');
+        });
+    });
+
+    // okta ---------------------------------
+    app.get('/unlink/okta', isLoggedIn, function(req, res) {
+        var user          = req.user;
+        user.okta.token = undefined;
         user.save(function(err) {
             res.redirect('/profile');
         });

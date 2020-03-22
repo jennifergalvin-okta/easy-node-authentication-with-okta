@@ -22,6 +22,13 @@ module.exports = {
         'clientID'         : 'your-secret-clientID-here',
         'clientSecret'     : 'your-client-secret-here',
         'callbackURL'      : 'http://localhost:8080/auth/google/callback'
+    },
+
+    'oktaAuth' : {
+        'audience'         : 'https://dev-513365.okta.com/',
+        'clientID'         : '0oa4nz7grixBg5WaC4x6',
+        'clientSecret'     : 'Ux-ekDyUkQNn8M6EiW7HU75gf0O1LJKcHJs0wThS',
+        'callbackURL'      : 'http://localhost:8080/auth/okta/callback'
     }
 
 };
