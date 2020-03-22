@@ -16,11 +16,13 @@ If you would like to download the code and try it for yourself:
 4. Whitelist the following urls in the App 
 
 Login URIs:
+
 http://localhost:8080/auth/okta/callback
 
 http://localhost:8080/auth/okta
 
 Logout URIs:
+
 http://localhost:8080
 
 http://localhost:8080/auth/okta/callback
@@ -28,6 +30,7 @@ http://localhost:8080/auth/okta/callback
 http://localhost:8080/auth/okta
 
 Initiate Login URI:
+
 http://localhost:8080/auth/okta/callback
 
 5.  Whitlist the following urls in CORS:
