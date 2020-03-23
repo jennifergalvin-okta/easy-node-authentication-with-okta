@@ -4,6 +4,8 @@ Based on the Scotch.io example here:  http://scotch.io/tutorials/easy-node-authe
 
 Uses techstars passport-okta-oauthto authentication to a free developer tenant in Okta - http://www.passportjs.org/packages/passport-okta-oauth/
 
+Note:  Runs on SVR4 linux only (MacOS or Linux), if you are Windows and need a development environment to try this out use the CFT located here:  https://jgalvinoktacftdemotemplates.s3.us-east-1.amazonaws.com/Single%20Amazon%20AWS%20Instance%20us-east1%20with%20ASA%20enrollment.json.txt
+
 Get an Okta Developer tenant here:  https://developer.okta.com 
 
 ## Instructions
@@ -38,8 +40,6 @@ http://localhost:8080
 
 5. Launch the app: `npm start`
 6. Visit in your browser at: `http://localhost:8080`
-
-Note:  Runs on SVR4 linux only (MacOS or Linux), if you are Windows and need a development environment to try this out use the CFT located here:  https://jgalvinoktacftdemotemplates.s3.us-east-1.amazonaws.com/Single%20Amazon%20AWS%20Instance%20us-east1%20with%20ASA%20enrollment.json.txt
 
 
 ## Many Thanks to TechStars and Scotch.io!  
