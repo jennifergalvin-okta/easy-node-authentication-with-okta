@@ -2,7 +2,7 @@
 
 Based on the Scotch.io example here:  http://scotch.io/tutorials/easy-node-authentication-linking-all-accounts-together
 
-Uses techstars passport-okta-oauthto authentication to a free developer tenant in Okta - http://www.passportjs.org/packages/passport-okta-oauth/
+Uses techstars passport-okta-oauth to authentication to a free developer tenant in Okta - http://www.passportjs.org/packages/passport-okta-oauth/
 
 Note:  Runs on SVR4 linux only (MacOS or Linux), if you are Windows and need a development environment to try this out use the CFT located here:  https://jgalvinoktacftdemotemplates.s3.us-east-1.amazonaws.com/Single%20Amazon%20AWS%20Instance%20us-east1%20with%20ASA%20enrollment.json.txt
 
